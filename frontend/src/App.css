@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+  color: #333;
+}
+
+#root {
+  width: 100%;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.header h1 {
+  color: #333;
+  margin: 0 0 15px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.header p {
+  color: #666;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.contract-info {
+  background: linear-gradient(135deg, #e8f4fd 0%, #d1e9f6 100%);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  border: 1px solid #cce7f0;
+}
+
+.contract-info strong {
+  color: #1976d2;
+}
+
+.button-section {
+  margin: 25px 0;
+  padding: 25px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.button-section:hover {
+  border-color: #d0d0d0;
+  background: #f8f8f8;
+}
+
+.button-section h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-section p {
+  margin: 0 0 15px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.test-button {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 4px;
+  min-width: 220px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.test-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.test-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.warning-button {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+}
+
+.warning-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f57c00 0%, #ef6c00 100%);
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+
+.disconnect-button {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  min-width: auto;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+}
+
+.disconnect-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+.wallet-button {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  margin: 10px 5px;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.wallet-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.wallet-button img {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+.status {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.status.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status.info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.explanation {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 50%);
+  border: 1px solid #ffeaa7;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 25px 0;
+}
+
+.explanation h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.explanation p {
+  margin: 0 0 15px 0;
+  color: #555;
+}
+
+.explanation ul {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.explanation li {
+  margin: 10px 0;
+  color: #555;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: #f1f3f4;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: #d63384;
+  font-size: 0.9em;
+  border: 1px solid #e9ecef;
+}
+
+a {
+  color: #2196F3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1976D2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .test-button {
+    min-width: auto;
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  .button-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .contract-info {
+    font-size: 12px;
+    padding: 15px;
+  }
+  
+  .explanation {
+    padding: 15px;
+  }
+}
