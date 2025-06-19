@@ -313,11 +313,25 @@ function App() {
             <StatusDisplay status={simpleStatus} />
           </div>
 
+          // Replace the current Bug Test section description with this:
+
           <div className="button-section">
             <h3>⚠️ Bug Test (Should show "likely to fail" warning)</h3>
             <p>
-              <strong>Expected behavior:</strong> MetaMask should show a 
-              "This transaction is likely to fail" warning, but the transaction will succeed anyway.
+              <strong>Original Issue:</strong> MetaMask should show a "This transaction is likely to fail" warning, 
+              but the transaction will succeed anyway.
+            </p>
+            <p>
+              <strong>What You Might See Instead:</strong>
+            </p>
+            <ul>
+              <li><strong>If Bug is Fixed:</strong> Normal transaction flow without warnings</li>
+              <li><strong>Enhanced Protection:</strong> "A previous transaction is still being signed" delay (15-30 seconds)</li>
+              <li><strong>Original Bug:</strong> "Likely to fail" warning with immediate confirm option</li>
+            </ul>
+            <p>
+              <em>This test uses a try-catch pattern that catches internal reverts, which originally 
+              confused MetaMask's transaction simulation.</em>
             </p>
             <button 
               onClick={() => executeTransaction('catchRevertAndSucceed', setBugStatus)}
