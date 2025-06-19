@@ -132,28 +132,28 @@ function App() {
       alert('Please connect your wallet first');
       return;
     }
-
+  
     try {
       setStatus({ status: 'pending', message: `Executing ${functionName}()...` });
-
+  
       const client = createWalletClient({
         chain: sepolia,
         transport: custom(selectedProvider.provider),
         account: account as `0x${string}`,
       }).extend(publicActions);
-
+  
       const hash = await client.writeContract({
         address: CONTRACT_ADDRESS,
         abi: CONTRACT_ABI,
         functionName: functionName,
       });
-
+  
       setStatus({ 
         status: 'pending', 
         message: `Transaction submitted. Hash: ${hash}`,
         hash 
       });
-
+  
       // Wait for transaction confirmation
       const receipt = await client.waitForTransactionReceipt({ hash });
       
@@ -176,10 +176,22 @@ function App() {
       }
     } catch (error: any) {
       console.error('Transaction failed:', error);
-      setStatus({ 
-        status: 'error', 
-        message: `❌ Error: ${error.message || 'Transaction failed'}` 
-      });
+      
+      // Check if user rejected the transaction
+      if (error.message?.includes('User rejected') || 
+          error.message?.includes('user rejected') ||
+          error.message?.includes('User denied') ||
+          error.code === 4001) {
+        setStatus({ 
+          status: 'idle', 
+          message: `Transaction cancelled by user.` 
+        });
+      } else {
+        setStatus({ 
+          status: 'error', 
+          message: `❌ Error: ${error.message || 'Transaction failed'}` 
+        });
+      }
     }
   };
 
@@ -303,7 +315,10 @@ function App() {
 
           <div className="button-section">
             <h3>⚠️ Bug Test (Should show "likely to fail" warning)</h3>
-            <p><strong>Expected behavior:</strong> MetaMask should show a "This transaction is likely to fail" warning, but the transaction will succeed anyway.</p>
+            <p>
+              <strong>Expected behavior:</strong> MetaMask should show a 
+              "This transaction is likely to fail" warning, but the transaction will succeed anyway.
+            </p>
             <button 
               onClick={() => executeTransaction('catchRevertAndSucceed', setBugStatus)}
               className="test-button warning-button"
